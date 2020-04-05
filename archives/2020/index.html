@@ -1,29 +1,10 @@
-extends partial/layout
 
-block site_title
-  != __('archive') + " | " + config.title
-
-block header
-  header.site-header
-    .site-nav
-      span.button-toggle
-      include partial/nav
-      form#search-form.nav-item
-        input(type="text" id="local-search-input" name="q" results="0" placeholder=__('search') class="search form-control" autocomplete="off" autocorrect="off")
-        span.fa.fa-times(onclick="resetSearch()") 
-      div#local-search-result
-      p.no-result No results found
+extends includes/layout.pug
 
 block content
-  include mixins/post
-  +postList()
+  include ./includes/mixins/article-sort.pug
+  #archive
+    .article-sort-title= 'Articles' + ' - ' + site.posts.length
+    +articleSort(page.posts)
+  include includes/partial/page-nav.pug
 
-block sidebar
-  include partial/sidebar
-
-block pagination
-  include mixins/paginator
-  +home()
-
-block copyright
-  include partial/footer

@@ -1,19 +1,9 @@
-extends partial/layout
-
-block header
-  include partial/header
+extends includes/layout.pug
 
 block content
-  include mixins/post
-  +posts()
+  include includes/recent-posts.pug
+  include includes/partial/page-nav.pug
+    
 
-block sidebar
-  include partial/sidebar
-  
-block pagination
-  include mixins/paginator
-  +home()
-  
-block copyright
-  include partial/footer
-  
+
+
